@@ -1,0 +1,37 @@
+{
+    "name": "jakulov/corpuscle",
+    "description": "Corpuscle Framework Core Components",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yakov Akulov",
+            "email": "jakulov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "/Users/yakov/projects/alfa_store/framework/container"
+        },
+        {
+            "type": "vcs",
+            "url": "/Users/yakov/projects/alfa_store/framework/router"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "jakulov\\Corpuscle\\": "src/jakulov/Corpuscle/"
+      }
+    },
+    "require": {
+        "psr/log": "^1.0",
+        "symfony/psr-http-message-bridge": "^0.2.0",
+        "jakulov/container": "dev-master",
+        "jakulov/corpuscle_router": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.1"
+    }
+}
