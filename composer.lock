@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "58b6ee79b1f74fbbc9d466cb06d4c362",
-    "content-hash": "88be29ebab499b20c76ceb042800add1",
+    "hash": "2d10af1de5016c65a40addabd1f794fb",
+    "content-hash": "758642c935dc8e219d5747c9389a5c10",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -44,7 +44,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakulov/container/zipball/8f68719f7df3308531f2d63e6c7e00f739d0d58b",
+                "url": "https://api.github.com/repos/jakulov/container/zipball/bd785f19fc0ef7e7f33b06f1431f18ed25cdfdf0",
                 "reference": "8f68719f7df3308531f2d63e6c7e00f739d0d58b",
                 "shasum": ""
             },
@@ -111,6 +111,52 @@
             ],
             "description": "Corpuscle Framework Router",
             "time": "2015-12-31 09:08:03"
+        },
+        {
+            "name": "psr/cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "9e66031f41fbbdda45ee11e93c45d480ccba3eb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/9e66031f41fbbdda45ee11e93c45d480ccba3eb3",
+                "reference": "9e66031f41fbbdda45ee11e93c45d480ccba3eb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "time": "2015-12-11 02:52:07"
         },
         {
             "name": "psr/http-message",

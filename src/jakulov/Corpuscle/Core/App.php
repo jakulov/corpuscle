@@ -23,6 +23,21 @@ class App implements AppInterface
     protected $DIContainer;
     /** @var Request */
     protected $request;
+    /** @var string */
+    protected static $varDir;
+
+    /**
+     * @return string
+     */
+    public static function getVarDir()
+    {
+        if(self::$varDir !== null) {
+            return self::$varDir;
+        }
+
+        throw new \RuntimeException('Unable to access var dir without handle request call');
+    }
+
 
     /**
      * @param array $config
@@ -54,7 +69,7 @@ class App implements AppInterface
     public function handleHttpRequest(Request $request = null, $sendResponse = true) : Response
     {
         try {
-            $this->request = $request ? $request : Request::createFromGlobals();
+            $this->initRuntime($request);
             $route = $this->getRouter()->route($this->request);
             if ($route->isNotFound() === false) {
                 return $this->sendResponse($this->runController($route), $sendResponse);
@@ -67,6 +82,16 @@ class App implements AppInterface
         catch(\Exception $e) {
             return $this->handleError($e, $sendResponse);
         }
+    }
+
+    /**
+     * @param Request $request
+     */
+    protected function initRuntime(Request $request)
+    {
+        $this->request = $request ? $request : Request::createFromGlobals();
+        $varDir = $this->getContainer()->get('app.var_dir');
+        self::$varDir = $this->request->server->get('DOCUMENT_ROOT', __DIR__) .'/'. $varDir;
     }
 
     /**

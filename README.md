@@ -21,6 +21,7 @@ Can be installed with composer
 
 ## 3. TODO ##
 
+- EventDispatcher / standalone
 - Logger / standalone
 - Composer hooks for building config files / standalone
 - Console App for creating and building projects / standalone

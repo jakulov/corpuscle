@@ -61,4 +61,9 @@ interface AppInterface
      * @return string
      */
     public function getEnvironment();
+
+    /**
+     * @return string
+     */
+    public static function getVarDir();
 }
