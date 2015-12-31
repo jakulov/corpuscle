@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "443b269b755cc082d090fb1495e1c225",
-    "content-hash": "f915df187a3ea13d13459f332f2e9533",
+    "hash": "58b6ee79b1f74fbbc9d466cb06d4c362",
+    "content-hash": "88be29ebab499b20c76ceb042800add1",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -39,8 +39,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/Users/yakov/projects/alfa_store/framework/container",
-                "reference": "bd785f19fc0ef7e7f33b06f1431f18ed25cdfdf0"
+                "url": "https://github.com/jakulov/container.git",
+                "reference": "8f68719f7df3308531f2d63e6c7e00f739d0d58b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakulov/container/zipball/8f68719f7df3308531f2d63e6c7e00f739d0d58b",
+                "reference": "8f68719f7df3308531f2d63e6c7e00f739d0d58b",
+                "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "^1.1"
@@ -54,6 +60,7 @@
                     "jakulov\\Container\\": "src/jakulov/Container"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -64,15 +71,21 @@
                 }
             ],
             "description": "Simple universal Container & DIContainer",
-            "time": "2015-12-30 21:54:30"
+            "time": "2015-12-13 00:24:59"
         },
         {
             "name": "jakulov/corpuscle_router",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/Users/yakov/projects/alfa_store/framework/router",
-                "reference": "e8fbb2075542c9f47830928ed414f59ce40fc736"
+                "url": "https://github.com/jakulov/corpuscle_router.git",
+                "reference": "8ce7858fc298ca66fcf0c0a398fd29636111cf69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakulov/corpuscle_router/zipball/8ce7858fc298ca66fcf0c0a398fd29636111cf69",
+                "reference": "8ce7858fc298ca66fcf0c0a398fd29636111cf69",
+                "shasum": ""
             },
             "require": {
                 "symfony/psr-http-message-bridge": "^0.2.0"
@@ -86,6 +99,7 @@
                     "jakulov\\Corpuscle\\": "src/jakulov/Corpuscle/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -96,7 +110,7 @@
                 }
             ],
             "description": "Corpuscle Framework Router",
-            "time": "2015-12-30 22:37:49"
+            "time": "2015-12-31 09:08:03"
         },
         {
             "name": "psr/http-message",
@@ -199,12 +213,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "b0ce2eabfbe3e64d14e21073ac1efc654a42ab38"
+                "reference": "8b8b077fd6fd4abaa9fb179eb82a34034f892895"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-foundation/zipball/8b8b077fd6fd4abaa9fb179eb82a34034f892895",
-                "reference": "b0ce2eabfbe3e64d14e21073ac1efc654a42ab38",
+                "reference": "8b8b077fd6fd4abaa9fb179eb82a34034f892895",
                 "shasum": ""
             },
             "require": {
@@ -243,7 +257,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-05 17:45:25"
+            "time": "2015-12-28 13:15:29"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -452,18 +466,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "e871a2a0cf62b56c36b4781e99b50c6bf08fab77"
+                "reference": "e55e3e32a870bd4f05425fa4f717b52bd40e5659"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpspec/prophecy/zipball/e55e3e32a870bd4f05425fa4f717b52bd40e5659",
-                "reference": "e871a2a0cf62b56c36b4781e99b50c6bf08fab77",
+                "reference": "e55e3e32a870bd4f05425fa4f717b52bd40e5659",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
+                "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "~2.0",
-                "sebastian/comparator": "~1.1"
+                "sebastian/comparator": "~1.1",
+                "sebastian/recursion-context": "~1.0"
             },
             "require-dev": {
                 "phpspec/phpspec": "~2.0"
@@ -504,7 +520,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-12-10 20:38:17"
+            "time": "2015-12-28 13:26:33"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -752,12 +768,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b8c914e8028fae2529f283fd77f7105ff91a30e4"
+                "reference": "61ea97f7467086b65efd26cf924c4a7ca0fbb2a6"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/61ea97f7467086b65efd26cf924c4a7ca0fbb2a6",
-                "reference": "b8c914e8028fae2529f283fd77f7105ff91a30e4",
+                "reference": "61ea97f7467086b65efd26cf924c4a7ca0fbb2a6",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +834,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-12-11 17:49:57"
+            "time": "2015-12-17 14:44:35"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1296,12 +1312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "8bae579c7afa252c055855f071c751eb75dcf6c4"
+                "reference": "816bd36756bc86351de54aed8fce14c77b353a30"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/816bd36756bc86351de54aed8fce14c77b353a30",
-                "reference": "8bae579c7afa252c055855f071c751eb75dcf6c4",
+                "reference": "816bd36756bc86351de54aed8fce14c77b353a30",
                 "shasum": ""
             },
             "require": {
@@ -1337,7 +1353,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-05 11:13:35"
+            "time": "2015-12-28 13:15:29"
         }
     ],
     "aliases": [],

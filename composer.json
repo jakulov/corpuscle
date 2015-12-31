@@ -10,16 +10,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "/Users/yakov/projects/alfa_store/framework/container"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/yakov/projects/alfa_store/framework/router"
-        }
-    ],
     "autoload": {
       "psr-4": {
         "jakulov\\Corpuscle\\": "src/jakulov/Corpuscle/"
