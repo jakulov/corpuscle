@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
+  # Core = 1
   config.vm.box = "oxdev/debian-jessie-x64"
 
   # Disable automatic box update checking. If you disable this, then

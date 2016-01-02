@@ -10,6 +10,8 @@ Can be installed with composer
 
 - [Container and dependency injection Container](https://github.com/jakulov/container)
 - [Corpuscle Router](https://github.com/jakulov/corpuscle_router)
+- [EventDispatcher](https://github.com/jakulov/event)
+- [Logger](https://github.com/jakulov/corpuscle_log)
 - ControllerInterface and AbstractController for implementing application logic
 - Config loader for loading php configuration files
 - AppInterface and App for middleware itself, can handle HTTP requests, send response and provide containers for you
@@ -21,8 +23,6 @@ Can be installed with composer
 
 ## 3. TODO ##
 
-- EventDispatcher / standalone
-- Logger / standalone
 - Composer hooks for building config files / standalone
 - Console App for creating and building projects / standalone
 - Storage abstraction layer (generate model for object, find objects with filter & sort, creating & updating object, dispatching events) / standalone

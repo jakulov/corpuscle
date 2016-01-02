@@ -1,12 +1,20 @@
 <?php
 namespace jakulov\Corpuscle\Core;
 
+use jakulov\Corpuscle\Event\AfterResponseEvent;
+use jakulov\Corpuscle\Event\BeforeResponseEvent;
+use jakulov\Corpuscle\Event\ErrorEvent;
+use jakulov\Corpuscle\Event\RequestEvent;
+use jakulov\Corpuscle\Event\RouteEvent;
+use jakulov\Corpuscle\Event\ShutdownEvent;
+use jakulov\Event\EventDispatcher;
 use Interop\Container\ContainerInterface;
 use jakulov\Container\DIContainer;
 use jakulov\Corpuscle\Controller\ControllerInterface;
 use jakulov\Corpuscle\Exception\HttpNotFoundException;
 use jakulov\Corpuscle\Router\RouteResult;
 use jakulov\Corpuscle\Router\RouterInterface;
+use Psr\Event\EventInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use jakulov\Container\Container;
@@ -69,9 +77,11 @@ class App implements AppInterface
     public function handleHttpRequest(Request $request = null, $sendResponse = true) : Response
     {
         try {
+            $this->getDIContainer()->provide('request', $request);
             $this->initRuntime($request);
             $route = $this->getRouter()->route($this->request);
             if ($route->isNotFound() === false) {
+                $this->onRoute($route);
                 return $this->sendResponse($this->runController($route), $sendResponse);
             }
 
@@ -85,13 +95,46 @@ class App implements AppInterface
     }
 
     /**
+     * @param RouteResult $route
+     */
+    protected function onRoute(RouteResult $route)
+    {
+        $this->dispatchEvent(new RouteEvent($this->request, $route));
+    }
+
+    /**
      * @param Request $request
      */
     protected function initRuntime(Request $request)
     {
         $this->request = $request ? $request : Request::createFromGlobals();
+        $this->onHttpRequest($request);
         $varDir = $this->getContainer()->get('app.var_dir');
         self::$varDir = $this->request->server->get('DOCUMENT_ROOT', __DIR__) .'/'. $varDir;
+    }
+
+    /**
+     * @return EventDispatcher
+     */
+    protected function getEventDispatcher()
+    {
+        return $this->getDIContainer()->get('event_dispatcher');
+    }
+
+    /**
+     * @param Request $request
+     */
+    protected function onHttpRequest(Request $request)
+    {
+        $this->dispatchEvent(new RequestEvent($request));
+    }
+
+    /**
+     * @param EventInterface $event
+     */
+    protected function dispatchEvent(EventInterface $event)
+    {
+        $this->getEventDispatcher()->dispatch($event->getName(), $event);
     }
 
     /**
@@ -101,6 +144,8 @@ class App implements AppInterface
      */
     protected function handleError(\Exception $exception, $sendResponse = true) : Response
     {
+        $this->dispatchEvent(new ErrorEvent($exception));
+
         $route = new RouteResult();
         $route->controller = $this->getContainer()->get('router.error');
         $route->action = RouteResult::ACTION_SHOW;
@@ -116,7 +161,35 @@ class App implements AppInterface
      */
     protected function sendResponse(Response $response, $sendResponse = true) : Response
     {
-        return $sendResponse ? $response->send() : $response;
+        $this->beforeResponse($response);
+        $return = $sendResponse ? $response->send() : $response;
+        $this->afterResponse($return);
+
+        return $return;
+    }
+
+    /**
+     * @param Response $response
+     */
+    protected function beforeResponse(Response $response)
+    {
+        $this->dispatchEvent(new BeforeResponseEvent($response));
+    }
+
+    /**
+     * @param Response $response
+     */
+    protected function afterResponse(Response $response)
+    {
+        $this->dispatchEvent(new AfterResponseEvent($response));
+    }
+
+    /**
+     * Shutdown app
+     */
+    public function shutdown()
+    {
+        $this->dispatchEvent(new ShutdownEvent());
     }
 
     /**
@@ -184,9 +257,9 @@ class App implements AppInterface
     }
 
     /**
-     * @return ContainerInterface
+     * @return DIContainer
      */
-    public function getDIContainer() : ContainerInterface
+    public function getDIContainer() : DIContainer
     {
         return $this->DIContainer;
     }
@@ -198,4 +271,14 @@ class App implements AppInterface
     {
         return $this->getContainer()->get('app.env');
     }
+
+    /**
+     * Shutdown app
+     */
+    function __destruct()
+    {
+        //$this->shutdown();
+    }
+
+
 }

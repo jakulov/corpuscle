@@ -3,6 +3,7 @@ namespace jakulov\Corpuscle\Core;
 
 use Interop\Container\ContainerInterface;
 use jakulov\Container\Container;
+use jakulov\Container\DIContainer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -53,9 +54,9 @@ interface AppInterface
     public function getContainer() : Container;
 
     /**
-     * @return ContainerInterface
+     * @return DIContainer
      */
-    public function getDIContainer() : ContainerInterface;
+    public function getDIContainer() : DIContainer;
 
     /**
      * @return string
